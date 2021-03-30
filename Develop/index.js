@@ -2,27 +2,40 @@
 const inquirer = require('inquirer');
 const fs = require("./generateMarkdown.js");
 
-// TODO: Create an array of questions for user input/ still need to put content
+// TODO: Create an array of questions for user input / still need to put content
 // const questions = [];
 inquirer
   .prompt([
     {
       type: 'input',
-      name: 'name',
-      message: 'What is your name?',
+      message: 'What is the title of your project?',
+      name: 'title',
     },
     {
-      type: 'checkbox',
-      message: 'What languages do you know?',
-      name: 'stack',
-      choices: ['HTML', 'CSS', 'JavaScript', 'MySQL'],
+      type: 'input',
+      message: 'What does your project do?',
+      name: 'description',
     },
     {
-      type: 'list',
-      message: 'What is your preferred method of communication?',
-      name: 'contact',
-      choices: ['email', 'phone', 'telekinesis'],
+      type: 'input',
+    message: 'How do you install this project?',
+    name: 'installation',
     },
+    {
+      type: 'input',
+    message: 'How do you use this project?',
+    name: 'usage',
+    },
+    {
+      type: 'input',
+    message: 'What does this project contribute?',
+    name: 'contribution guidelines'
+    {
+      type: 'input',
+    message: 'How do you test this project?',
+    name: 'test instructions',
+    },
+    
   ])
   .then((data) => {
     const filename = `${data.name.toLowerCase().split(' ').join('')}.json`;
