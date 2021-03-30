@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application/ done!
 const inquirer = require("inquirer");
 const fs = require("fs")
-const fs = require("./generateMarkdown.js");
+const generateMarkdown = require("./generateMarkdown.js");
 
 // TODO: Create an array of questions for user input / still need to put content
 // const questions = [];
@@ -29,7 +29,7 @@ inquirer
     },
     {
     type: "input",
-    message: "What does this project contribute?",
+    message: "Who contributed to this project?",
     name: "contribution guidelines",
     },
     {
@@ -40,7 +40,7 @@ inquirer
     
   ])
   .then((data) => {
-    const filename = `${data.name.toLowerCase().split(" ").join("")}.json`;
+    const generateMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
 
     fs.writeFile(filename, JSON.stringify(data, null, "\t"), (err) =>
       err ? console.log(err) : console.log("Success!")
