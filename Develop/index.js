@@ -17,21 +17,22 @@ inquirer
       name: 'description',
     },
     {
-      type: 'input',
+    type: 'input',
     message: 'How do you install this project?',
     name: 'installation',
     },
     {
-      type: 'input',
+    type: 'input',
     message: 'How do you use this project?',
     name: 'usage',
     },
     {
-      type: 'input',
+    type: 'input',
     message: 'What does this project contribute?',
-    name: 'contribution guidelines'
+    name: 'contribution guidelines',
+    },
     {
-      type: 'input',
+    type: 'input',
     message: 'How do you test this project?',
     name: 'test instructions',
     },
