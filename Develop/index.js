@@ -9,40 +9,40 @@ inquirer
   .prompt([
     {
       type: "input",
-      message: "What is the title of your project?",
       name: "title",
+      message: "What is the title of your project?",
     },
     {
       type: "input",
-      message: "What does your project do?",
       name: "description",
+      message: "What does your project do?",
     },
     {
     type: "input",
-    message: "How do you install this project?",
     name: "installation",
+    message: "How do you install this project?",
     },
     {
     type: "input",
-    message: "How do you use this project?",
     name: "usage",
+    message: "How do you use this project?",
     },
     {
     type: "input",
+    name: "contribution",
     message: "Who contributed to this project?",
-    name: "contribution guidelines",
     },
     {
     type: "input",
+    name: "test",
     message: "How do you test this project?",
-    name: "test instructions",
     },
     
   ])
   .then((data) => {
     const generateMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
 
-    fs.writeFile(filename, JSON.stringify(data, null, "\t"), (err) =>
+    fs.writeFile("generateMarkdown.js", JSON.stringify(data, null, "\t"), (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
