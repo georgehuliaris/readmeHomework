@@ -37,25 +37,65 @@ inquirer
     name: "test",
     message: "How do you test this project?",
     },
+    {
+      type: "checkbox",
+      name: "license",
+      message: "Which license would you like to use?",
+      choices: [
+          "APM",
+          "AUR",
+          "Bower",
+          "Cocoapods",
+      ],
+      },
     
   ])
   .then((data) => {
-    const generateMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
+    let generateMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
 
     fs.writeFile("generateMarkdown.js", JSON.stringify(data, null, "\t"), (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
 
+// function generateMarkdown(response) {
+//   return `
+// # ${response.title}
+  
+// ## Table of Contents
+// -[Description](#description)
+// -[Installation](#installation)
+// -[Usage](#usage)
+// -[Contribution](#contribution)
+// -[Test](#test)
+// -[License](#license)
 
-// TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+// # Description:
+// ![License](https://img.shields.io/badge/License-${response.license}-blueviolet "License Badge")
+//   ${response.description}
+// # Installation:
+//   ${response.instillation}
+// # Usage:
+//   ${response.usage}
+// # Contribution:
+//   ${response.contribution}
+// # Test:
+//   ${response.test}
+// # License:
+//    ${response.license}
+// `
+// };
+// // TODO: Create a function to write README file
+// // function writeToFile(fileName, data) {}
 
-// TODO: Create a function to initialize app
-function init() {}
+// // // TODO: Create a function to initialize app
+// // // function init() {}
+// // function init () {
 
-// Function call to initialize app
-init();
+// // }
+
+// // // Function call to initialize app
+// // init();
 
 
 
