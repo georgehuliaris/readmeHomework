@@ -1,7 +1,7 @@
 // TODO: Include packages needed for this application/ done!
 const inquirer = require("inquirer");
 const fs = require("fs")
-const generateMarkdown = require("./generateMarkdown.js");
+// const generateMarkdown = require("./generateMarkdown.js");
 
 // TODO: Create an array of questions for user input / still need to put content
 // const questions = [];
@@ -58,44 +58,48 @@ inquirer
     );
   });
 
-// function generateMarkdown(response) {
-//   return `
-// # ${response.title}
+function generateMarkdown(response) {
+  return `
+# ${response.title}
   
-// ## Table of Contents
-// -[Description](#description)
-// -[Installation](#installation)
-// -[Usage](#usage)
-// -[Contribution](#contribution)
-// -[Test](#test)
-// -[License](#license)
+## Table of Contents
+-[Description](#description)
+-[Installation](#installation)
+-[Usage](#usage)
+-[Contribution](#contribution)
+-[Test](#test)
+-[License](#license)
 
-// # Description:
-// ![License](https://img.shields.io/badge/License-${response.license}-blueviolet "License Badge")
-//   ${response.description}
-// # Installation:
-//   ${response.instillation}
-// # Usage:
-//   ${response.usage}
-// # Contribution:
-//   ${response.contribution}
-// # Test:
-//   ${response.test}
-// # License:
-//    ${response.license}
-// `
-// };
-// // TODO: Create a function to write README file
-// // function writeToFile(fileName, data) {}
+# Description:
+![License](https://img.shields.io/badge/License-${response.license}-blueviolet "License Badge")
+  ${response.description}
+# Installation:
+  ${response.instillation}
+# Usage:
+  ${response.usage}
+# Contribution:
+  ${response.contribution}
+# Test:
+  ${response.test}
+# License:
+   ${response.license}
+`
+};
+// TODO: Create a function to write README file
+// function writeToFile(fileName, data) {}
 
-// // // TODO: Create a function to initialize app
-// // // function init() {}
-// // function init () {
+// // TODO: Create a function to initialize app
+// // function init() {}
+function init () {
+  try {
+    const readMe = generateMarkdown(response);
+    fs.writeFile("README.md", readMe);
+    console.log("Got it!");
+  } catch (err) {
+    console.log(err);
+  }
 
-// // }
+}
 
-// // // Function call to initialize app
-// // init();
-
-
-
+// // Function call to initialize app
+init();
