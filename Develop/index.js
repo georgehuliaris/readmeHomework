@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application/ done!
 const inquirer = require("inquirer");
 const fs = require("fs")
+const util = require ('util');
 const generateMarkdown = require("./generateMarkdown.js");
 
 // TODO: Create an array of questions for user input / still need to put content
@@ -42,23 +43,23 @@ inquirer
       name: "license",
       message: "Which license would you like to use?",
       choices: [
-          "APM",
-          "AUR",
-          "Bower",
-          "Cocoapods",
+          "MIT",
+          "Microsoft Public License",
+          "Boost",
+          "BSD",
       ],
       },
     
   ])
   .then((data) => {
-    let generateMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
+    let generatedMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
 
-    fs.writeFile("generateMarkdown.js", JSON.stringify(data, null, "\t"), (err) =>
+    fs.writeFile("generatedMarkdown.js", JSON.stringify(data, null, "\t"), (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
 
-function generateMarkdown(response) {
+function generatedMarkdown(response) {
   return `
 # ${response.title}
   
@@ -92,7 +93,7 @@ function generateMarkdown(response) {
 // // function init() {}
 function init () {
   try {
-    const readMe = generateMarkdown(response);
+    const readMe = generatedMarkdown(response);
     fs.writeFile("README.md", readMe);
     console.log("Got it!");
   } catch (err) {
@@ -102,4 +103,4 @@ function init () {
 }
 
 // // Function call to initialize app
-init();
+// init();
