@@ -6,7 +6,17 @@ const generateMarkdown = require("./generateMarkdown.js");
 
 // TODO: Create an array of questions for user input / still need to put content
 // const questions = [];
-inquirer
+
+
+
+// TODO: Create a function to write README file
+// function writeToFile(fileName, data) {}
+
+// // TODO: Create a function to initialize app
+// // function init() {}
+function init () {
+  try {
+    inquirer
   .prompt([
     {
       type: "input",
@@ -52,50 +62,12 @@ inquirer
     
   ])
   .then((data) => {
-    let generatedMarkdown = `${data.name.toLowerCase().split(" ").join("")}.json`;
-
-    fs.writeFile("generatedMarkdown.js", JSON.stringify(data, null, "\t"), (err) =>
+    const generatedMarkdown = generateMarkdown(data)
+    console.log(generatedMarkdown)
+    fs.writeFile("README.md", generatedMarkdown, (err) =>
       err ? console.log(err) : console.log("Success!")
     );
   });
-
-function generatedMarkdown(response) {
-  return `
-# ${response.title}
-  
-## Table of Contents
--[Description](#description)
--[Installation](#installation)
--[Usage](#usage)
--[Contribution](#contribution)
--[Test](#test)
--[License](#license)
-
-# Description:
-![License](https://img.shields.io/badge/License-${response.license}-blueviolet "License Badge")
-  ${response.description}
-# Installation:
-  ${response.instillation}
-# Usage:
-  ${response.usage}
-# Contribution:
-  ${response.contribution}
-# Test:
-  ${response.test}
-# License:
-   ${response.license}
-`
-};
-// TODO: Create a function to write README file
-// function writeToFile(fileName, data) {}
-
-// // TODO: Create a function to initialize app
-// // function init() {}
-function init () {
-  try {
-    const readMe = generatedMarkdown(response);
-    fs.writeFile("README.md", readMe);
-    console.log("Got it!");
   } catch (err) {
     console.log(err);
   }
@@ -103,4 +75,4 @@ function init () {
 }
 
 // // Function call to initialize app
-// init();
+init();
