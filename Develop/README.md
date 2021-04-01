@@ -1,5 +1,5 @@
 
-# d
+# readme creator
   
 ## Table of Contents
 -[Description](#description)
@@ -10,15 +10,15 @@
 -[License](#license)
 
 # Description:
-![License](https://img.shields.io/badge/License-MIT-blueviolet "License Badge")
-  d
+![License](https://img.shields.io/badge/License-Microsoft Public License-blueviolet "License Badge")
+  creates readmes
 # Installation:
-  undefined
+  node index.js
 # Usage:
-  d
+  answer the questions and it will populate the answer in the readme doc
 # Contribution:
-  d
+  me!
 # Test:
-  d
+  npm run test
 # License:
-   MIT
+   Microsoft Public License
